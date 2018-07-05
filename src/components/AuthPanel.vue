@@ -88,23 +88,11 @@
   #password {
     border: 1px solid #c0c0c0;
     border-radius: 0 0 6px 6px;
+    margin-bottom: 15px;
   }
   #password:focus  {
     outline: none;
   }  
-
-  .checkbox-container {
-    display: flex;
-    align-items: center;
-    margin: 15px auto 15px 0;
-  }
-
-  #remember {
-    width: 15px;
-    height: 15px;
-    margin-right: 8px;
-  }
-
   button {
     width: 100%;
     height: 40px;
