@@ -1,0 +1,111 @@
+<template>
+  <div class="container">
+    <div class="item-list" v-for="item in photos">
+      <!-- <PhotoContainer
+        :isSignin="isSignin"
+        :id="photo.id"
+        :title="photo.title"
+        :description="photo.description"
+        :fileLocation="photo.file_location"
+      /> -->
+      <item-list-element/>
+    </div>
+  </div>
+</template>
+
+<script>
+  // import axios from 'axios'
+  import ItemListElement from '@/components/ItemListElement'
+  export default {
+    data: function() {
+      return {
+        isSignin: false,
+        // photos: [{
+        //     id: 1,
+        //     title: '',
+        //     description: '',
+        //     file_location: '',
+        //   }],
+        photos: [1,2,3,4,5,6,7]
+      }
+    },
+    components: {
+      ItemListElement: ItemListElement,
+    },
+    methods: {
+      // checkSigninState: function(res) {
+      //   const action = res.action
+      //   if (action === 'signin') { this.isSignin = true }
+      //   if (action === 'logout') { this.isSignin = false }
+      // },
+      // destroyItem: function(res){
+
+      //   let index = this.photos.findIndex(function(element,index,array){
+          
+      //     return element.id === res.id
+      //   })
+      //   console.log(index)
+      //   this.photos.splice(index,1)
+        
+      // }
+    },
+    // created() {
+    //   const url = 'http://35.185.111.183/api/v1/photos'
+    //   const that = this
+    //   axios.get(url, {})
+    //     .then(function(res) {
+    //       that.photos = res.data.data // type of photos is array
+    //     })
+    //     .catch(function(err) { console.error(err) })
+
+    //   this.$bus.$on('checkHomeState', function(data) {
+    //     that.checkSigninState(data)
+    //   })
+    //   this.$bus.$on('destroyItem', function(data){
+    //     that.destroyItem(data)
+    //   });
+    //   const storage = localStorage.getItem('vue-photo-album-user')
+    //   if (!!storage) {
+    //     this.checkSigninState({action: 'signin'})
+    //   }
+    // },
+    // beforeDestroy: function() {
+    //   this.$bus.$off('checkHomeState')
+    // },
+  }
+</script>
+
+<style scoped>
+  .container {
+    max-width: 1440px;
+    margin: 100px auto;
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .item-list {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 25%;
+    margin-bottom: 60px;
+  }
+
+  @media (max-width: 993px ) {
+    .photo-container-wrapper {
+      width: 33.333%
+    }
+  }
+
+  @media (max-width: 769px ) {
+    .photo-container-wrapper {
+      width: 50%
+    }
+  }
+
+  @media (max-width: 577px ) {
+    .photo-container-wrapper {
+      width: 100%
+    }
+  }
+</style>

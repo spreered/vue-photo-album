@@ -15,7 +15,7 @@
       placeholder="Password"
       v-model="password"
     >
-    <button @click="submit">{{ content }}</button>
+    <button @click="handleSubmit">{{ content }}</button>
   </div>
 </template>
 
@@ -38,7 +38,7 @@
       }
     },
     methods:{
-      submit: function() {
+      handleSubmit: function() {
         // const payload = {
         //   email: this.email,
         //   password: this.password,
