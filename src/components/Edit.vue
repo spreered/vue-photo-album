@@ -3,12 +3,7 @@
     <div class="photo-container">
       <ImgDisplay />
     </div>
-    <!-- <div class="main-container" v-if="data.title">
-      <PhotoInputComponent
-        :data="data" 
-        @submitBtnClick="handleSubmitBtnClick"
-      />
-    </div> -->
+
     <div class="main-container">
       <PhotoForm/> 
     </div>
