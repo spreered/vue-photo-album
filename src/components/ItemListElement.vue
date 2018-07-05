@@ -25,7 +25,7 @@ export default {
     itemData:{
       default: function(){
         return {
-          id:'',
+          id:'1',
           title:'title',
           description:'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi, exercitationem!',
           url:''
@@ -35,11 +35,11 @@ export default {
   },
   methods: {
     handleShow: function() {
-      // this.$router.push('/photo/' + this.id)
+      this.$router.push('/photo/' + this.id)
       console.log('show')
     },
     handleEdit: function() {
-      // this.$router.push('/photo/edit/' + this.id)
+      this.$router.push('/photo/edit/' + this.id)
       console.log('edit')
     },
     handleDelete: function() {

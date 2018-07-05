@@ -12,14 +12,40 @@ import New from '@/components/New'
 import Edit from '@/components/Edit'
 
 
+
 Vue.use(Router)
 
 export default new Router({
   routes: [
     {
       path: '/',
+      name: 'Index',
+      component: Index
+    },
+    {
+      path: '/user/login',
+      name: 'Login',
+      component: Login
+    },
+    {
+      path: '/user/signup',
+      name: 'SignUp',
+      component: SignUp
+    },
+    {
+      path: '/photo/new',
+      name: 'New',
+      component: New
+    },
+    {
+      path: '/photo/edit/:id',
       name: 'Edit',
       component: Edit
+    },
+    {
+      path: '/photo/:id',
+      name: 'Show',
+      component: Show
     }
   ]
 })
