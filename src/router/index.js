@@ -1,15 +1,15 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import HelloWorld from '@/components/HelloWorld'
-
+import ImgContainer from '@/components/ImgContainer'
+import AuthPanel from '@/components/AuthPanel'
 Vue.use(Router)
 
 export default new Router({
   routes: [
     {
       path: '/',
-      name: 'HelloWorld',
-      component: HelloWorld
+      name: 'AuthPanel',
+      component: AuthPanel
     }
   ]
 })
