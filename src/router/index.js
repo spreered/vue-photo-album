@@ -8,14 +8,18 @@ import Index from '@/components/Index'
 import Login from '@/components/Login'
 import SignUp from '@/components/SignUp'
 import Show from '@/components/Show'
+import New from '@/components/New'
+import Edit from '@/components/Edit'
+
+
 Vue.use(Router)
 
 export default new Router({
   routes: [
     {
       path: '/',
-      name: 'Show',
-      component: Show
+      name: 'Edit',
+      component: Edit
     }
   ]
 })
