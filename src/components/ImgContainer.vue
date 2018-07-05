@@ -1,6 +1,6 @@
 <template>
   <div>
-    <!-- <div id="photo" :style="imgShow" v-if="src"> -->
+    <!-- <div id="photo" :style="imgShow" v-if="url"> -->
       <div id="img-panel" :style="imgShow" >
     </div>
   </div>
@@ -8,11 +8,14 @@
 
 <script>
   export default {
-    props: ['src'],
+    props: ['url'],
     computed:{
+      // file_location: function() {
+      //   return this.fileLocation ? 'http://35.185.111.183' + this.fileLocation.url : ''
+      // },
       imgShow: function(){
         return {
-          // background:'url('+ this.src +') no-repeat center',
+          // background:'url('+ this.file_location +') no-repeat center',
           background:'url(https://picsum.photos/200/300) no-repeat center',
           backgroundSize: 'cover'
         }

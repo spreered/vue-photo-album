@@ -24,7 +24,6 @@
     props: ['type'],
     data: function() {
       return {
-        hasRememberMe: false,
         email: '',
         password: '',
       }
