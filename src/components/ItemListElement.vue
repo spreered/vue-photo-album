@@ -18,7 +18,7 @@
 </template>
 
 <script>
-// import axios from 'axios';
+import axios from 'axios';
 export default {
   // props: ['isLogin', 'id', 'title', 'description', 'url'],
   props: {
@@ -63,16 +63,16 @@ export default {
       console.log('edit')
     },
     handleDelete: function() {
-      // const url = 'http://35.185.111.183/api/v1/photos/' + this.id
-      // const token = JSON.parse(localStorage.getItem('vue-photo-album-user')).authToken
-      // const params = { auth_token: token }
-      // let that = this
-      // axios.delete(url, {params})
-      //   .then(function(res) { 
-      //     console.log(res);
-      //     that.$bus.$emit('destroyItem',{id: that.id})
-      //   })
-      //   .catch(function(err) { console.error(err) })
+      const deleteUrl = 'http://35.185.111.183/api/v1/photos/' + this.id
+      const token = JSON.parse(localStorage.getItem('photo-album-user')).authToken
+      const params = { auth_token: token }
+      let that = this
+      axios.delete(deleteUrl, {params})
+        .then(function(res) { 
+          console.log(res);
+          that.$bus.$emit('destroy-item',{id: that.id})
+        })
+        .catch(function(err) { console.error(err) })
       console.log('destroy')
     },
   },
