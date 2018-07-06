@@ -1,6 +1,5 @@
 <template>
   <div>
-    <!-- <div id="photo" :style="imgShow" v-if="url"> -->
       <div id="img-panel" :style="imgShow" v-if="url">
     </div>
   </div>
@@ -10,9 +9,6 @@
   export default {
     props: ['url'],
     computed:{
-      // file_location: function() {
-      //   return this.fileLocation ? 'http://35.185.111.183' + this.fileLocation.url : ''
-      // },
       imgShow: function(){
         return {
           background:'url('+ this.url +') no-repeat center',

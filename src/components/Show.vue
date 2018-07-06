@@ -1,9 +1,6 @@
 <template>
   <div class="show">
     <div class="photo-container">
-      <!-- <ImgDisplay
-        :url="url"
-      /> -->
       <ImgDisplay :url="url" />
     </div>
     <div class="main-container">
@@ -35,16 +32,9 @@
       const showUrl = 'http://35.185.111.183/api/v1/photos/' + id
       const token = JSON.parse(localStorage.getItem('photo-album-user')).authToken
       const params = { auth_token: token }
-      // console.log(url);
-      // console.log(token);
       const that = this
       axios.get(showUrl, {params})
         .then(function(res) {
-      //     console.log(res.data.title);
-      //     console.log(res.data.id);
-      //     console.log(res.data.description);
-      //     console.log(res.data.file_location);
-
           that.title = res.data.title
           that.description = res.data.description
           that.url = 'http://35.185.111.183' + res.data.file_location.url

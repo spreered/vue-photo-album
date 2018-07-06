@@ -45,17 +45,6 @@
         default:''
       },
     },
-    // props: {
-    //   formData:{
-    //     default: function(){
-    //       return {
-    //         title:'',
-    //         description:'',
-    //         file_location:''
-    //       }
-    //     }
-    //   }
-    // },
     data: function() {
       return {
         newDate: new Date(),

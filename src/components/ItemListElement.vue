@@ -39,19 +39,6 @@ export default {
       type: String,
       default:'https://picsum.photos/200/200'
     },
-    // title:'title',
-    // description:'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi, exercitationem!',
-    // url:''
-    // itemData:{
-    //   default: function(){
-    //     return {
-    //       id:'1',
-    //       title:'title',
-    //       description:'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi, exercitationem!',
-    //       url:''
-    //     }
-    //   }
-    // }
   },
   methods: {
     handleShow: function() {

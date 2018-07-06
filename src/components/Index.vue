@@ -93,33 +93,14 @@
       if (!!sessionData) {
         this.handleAuthState({action: 'login'})
       }
-
-    }
+    },
+    beforeDestroy: function() {
+      this.$bus.$off('auth-state')
+      this.$bus.$off('destroy-item')
+    },
+    
       
   }
-    // created() {
-    //   const url = 'http://35.185.111.183/api/v1/photos'
-    //   const that = this
-    //   axios.get(url, {})
-    //     .then(function(res) {
-    //       that.photos = res.data.data // type of photos is array
-    //     })
-    //     .catch(function(err) { console.error(err) })
-
-    //   this.$bus.$on('checkHomeState', function(data) {
-    //     that.checkSigninState(data)
-    //   })
-    //   this.$bus.$on('destroyItem', function(data){
-    //     that.destroyItem(data)
-    //   });
-    //   const storage = localStorage.getItem('vue-photo-album-user')
-    //   if (!!storage) {
-    //     this.checkSigninState({action: 'signin'})
-    //   }
-    // },
-    // beforeDestroy: function() {
-    //   this.$bus.$off('checkHomeState')
-    // },
 </script>
 
 <style scoped>

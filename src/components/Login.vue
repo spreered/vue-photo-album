@@ -1,7 +1,6 @@
 <template>
   <div class="login">
     <AuthPanel type="login" @auth-panel-submit="handleLogin"/>
-    <!-- <AuthPanel type="login"/> -->
   </div>
 </template>
 
@@ -45,23 +44,6 @@
             console.error(err)
           })
       }
-      // handleSignBtnClick: function(payload) {
-      //   const that = this
-      //   const url = 'http://35.185.111.183/api/v1/login'
-      //   // payload 是 $emit 傳入的值，也就是 { email: xxx, password: xxx }
-      //   axios.post(url, payload)
-      //     .then(function(res) {
-      //       const authToken = res.data.auth_token
-      //       const email = payload.email
-      //       const storage = { authToken: authToken, email: email }
-      //       that.$bus.$emit('checkSigninState', {action: 'signin', payload: storage})
-      //       that.$bus.$emit('checkHomeState', {action: 'signin'})
-      //       that.$router.push('/')
-      //     })
-      //     .catch(function(err) {
-      //       console.error(err)
-      //     })
-      // }
     }
 
   }
