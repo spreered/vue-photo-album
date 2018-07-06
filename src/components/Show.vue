@@ -4,7 +4,7 @@
       <!-- <ImgDisplay
         :url="url"
       /> -->
-      <ImgDisplay/>
+      <ImgDisplay :url="url" />
     </div>
     <div class="main-container">
       <h3 class="main-title">{{title}}</h3>
@@ -15,14 +15,14 @@
 </template>
 
 <script>
-  // import axios from 'axios'
+  import axios from 'axios'
   import ImgDisplay from '@/components/ImgDisplay'
   import moment from 'moment'
   export default {
     data: function() {
       return {
-        title: 'Lorem ipsum dolor sit.',
-        description: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eum, quae?',
+        title: '',
+        description: '',
         url: '',
         date: moment().format('DD.MM.YYYY HH:MM'),
       }
@@ -31,28 +31,28 @@
       ImgDisplay: ImgDisplay,
     },
     created: function() {
-      // const id = this.$route.params.id
-      // const url = 'http://35.185.111.183/api/v1/photos/' + id
-      // const token = JSON.parse(localStorage.getItem('vue-photo-album-user')).authToken
-      // const params = { auth_token: token }
+      const id = this.$route.params.id
+      const showUrl = 'http://35.185.111.183/api/v1/photos/' + id
+      const token = JSON.parse(localStorage.getItem('photo-album-user')).authToken
+      const params = { auth_token: token }
       // console.log(url);
       // console.log(token);
-      // const that = this
-      // axios.get(url, {params})
-      //   .then(function(res) {
+      const that = this
+      axios.get(showUrl, {params})
+        .then(function(res) {
       //     console.log(res.data.title);
       //     console.log(res.data.id);
       //     console.log(res.data.description);
       //     console.log(res.data.file_location);
 
-      //     that.title = res.data.title
-      //     that.description = res.data.description
-      //     that.url = 'http://35.185.111.183' + res.data.file_location.url
-      //   })
-      //   .catch(function(err) {
-      //     console.error(err)
-      //     //that.$router.push('/user/signin')
-      //   })
+          that.title = res.data.title
+          that.description = res.data.description
+          that.url = 'http://35.185.111.183' + res.data.file_location.url
+        })
+        .catch(function(err) {
+          console.error(err)
+          that.$router.push('/user/signin')
+        })
     }
   }
 </script>

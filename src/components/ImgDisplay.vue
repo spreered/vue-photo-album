@@ -1,7 +1,7 @@
 <template>
   <div>
     <!-- <div id="photo" :style="imgShow" v-if="url"> -->
-      <div id="img-panel" :style="imgShow" >
+      <div id="img-panel" :style="imgShow" v-if="url">
     </div>
   </div>
 </template>
@@ -15,9 +15,8 @@
       // },
       imgShow: function(){
         return {
-          // background:'url('+ this.file_location +') no-repeat center',
-          background:'url(https://picsum.photos/200/300) no-repeat center',
-          backgroundSize: 'cover'
+          background:'url('+ this.url +') no-repeat center',
+          backgroundSize: 'cover'     
         }
       }
     }

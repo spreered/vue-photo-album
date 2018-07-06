@@ -80,7 +80,6 @@ export default {
     imgShow: function(){
       return {
         background:'url('+ this.url +') no-repeat center',
-        // background:'url(https://picsum.photos/200/200) no-repeat center',
         backgroundSize: 'cover'
       }
     }

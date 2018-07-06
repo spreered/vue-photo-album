@@ -13,7 +13,7 @@
         :id ="photo.id"
         :title="photo.title"
         :description="photo.description"
-        :url="'http://35.185.111.183/'+photo.file_location.url" 
+        :url="'http://35.185.111.183'+photo.file_location.url" 
       />
               <!-- :id="photo.id"
         :title="photo.title"
@@ -30,12 +30,7 @@
     data: function() {
       return {
         isLogin: false,
-        photos: [{
-            id: 1,
-            title: '',
-            description: '',
-            file_location: '',
-          }],
+        photos: [],
       }
     },
     components: {
@@ -78,27 +73,10 @@
           //         "url": "/uploads/photo/file_location/1/myra-birthday.png"
           //       }
           //     },
-          //     {
-          //       "id": 2,
-          //       "title": "Family outing",
-          //       "description": "Spending some time at the park after a long week.",
-          //       "file_location": {
-          //         "url": "/uploads/photo/file_location/1/family-outint.png"
-          //       }
-          //     }
+          //     {...}
           //   ]
           // }
 
-          // mappining res.data to photos
-          // // that.photos = res.data.data.map(function(obj){
-          // //   let photo = {}
-          // //   photo.id = obj.id
-          // //   photo.title = obj.title
-          // //   photo.description = obj.description
-          // //   photo.url = hostUrl + obj.file_location.url
-          // //   return photo
-          // // })
-          // console.dir(that.photos);
           that.photos = res.data.data
         }).catch(function(err){console.error(err) })
       
