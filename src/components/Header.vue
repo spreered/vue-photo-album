@@ -107,10 +107,10 @@
 
       // 2. check auth state form local storage
       const sessionData = JSON.parse(localStorage.getItem('photo-album-user'));
-      console.log("get storage "+ sessionData);
-      console.log(sessionData);
+      // console.log("get storage "+ sessionData);
+      // console.log(sessionData);
       if (!!sessionData) {
-        this.handleAuthState({action: 'login', email: sessionData.email})
+        this.handleAuthState({action: 'login'})
       }
     },
     beforeDestroy: function() {

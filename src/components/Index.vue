@@ -1,43 +1,55 @@
 <template>
   <div class="container">
-    <div class="item-list" v-for="item in photos">
+    <div class="item-list" v-for="photo in photos">
       <!-- <PhotoContainer
-        :isSignin="isSignin"
+        :isLogin="isSignin"
         :id="photo.id"
         :title="photo.title"
         :description="photo.description"
         :fileLocation="photo.file_location"
       /> -->
-      <item-list-element/>
+      <item-list-element
+        :isLogin="isLogin"
+        :id ="photo.id"
+        :title="photo.title"
+        :description="photo.description"
+        :url="'http://35.185.111.183/'+photo.file_location.url" 
+      />
+              <!-- :id="photo.id"
+        :title="photo.title"
+        :description="photo.description"
+        :url="photo.file_location.url" -->
     </div>
   </div>
 </template>
 
 <script>
-  // import axios from 'axios'
+  import axios from 'axios'
   import ItemListElement from '@/components/ItemListElement'
   export default {
     data: function() {
       return {
-        isSignin: false,
-        // photos: [{
-        //     id: 1,
-        //     title: '',
-        //     description: '',
-        //     file_location: '',
-        //   }],
-        photos: [1,2,3,4,5,6,7]
+        isLogin: false,
+        photos: [{
+            id: 1,
+            title: '',
+            description: '',
+            file_location: '',
+          }],
       }
     },
     components: {
       ItemListElement: ItemListElement,
     },
     methods: {
-      // checkSigninState: function(res) {
-      //   const action = res.action
-      //   if (action === 'signin') { this.isSignin = true }
-      //   if (action === 'logout') { this.isSignin = false }
-      // },
+      handleAuthState: function(payload){
+        const action = payload.action
+        if (action == 'login'){
+          this.isLogin = true
+        }else if(action == 'logout'){
+          this.isLogin = false
+        }
+      },
       // destroyItem: function(res){
 
       //   let index = this.photos.findIndex(function(element,index,array){
@@ -49,6 +61,61 @@
         
       // }
     },
+    created(){
+      //1. get photos form api
+      const indexUrl = 'http://35.185.111.183/api/v1/photos'
+      const hostUrl = 'http://35.185.111.183/'
+      const that = this
+      axios.get(indexUrl,{})
+        .then(function(res){
+          // {
+          //   "data": [
+          //     {
+          //       "id": 1,
+          //       "title": "Myra's Birthday",
+          //       "description": "This is my favourite photo",
+          //       "file_location": {
+          //         "url": "/uploads/photo/file_location/1/myra-birthday.png"
+          //       }
+          //     },
+          //     {
+          //       "id": 2,
+          //       "title": "Family outing",
+          //       "description": "Spending some time at the park after a long week.",
+          //       "file_location": {
+          //         "url": "/uploads/photo/file_location/1/family-outint.png"
+          //       }
+          //     }
+          //   ]
+          // }
+
+          // mappining res.data to photos
+          // // that.photos = res.data.data.map(function(obj){
+          // //   let photo = {}
+          // //   photo.id = obj.id
+          // //   photo.title = obj.title
+          // //   photo.description = obj.description
+          // //   photo.url = hostUrl + obj.file_location.url
+          // //   return photo
+          // // })
+          // console.dir(that.photos);
+          that.photos = res.data.data
+        }).catch(function(err){console.error(err) })
+      
+      // 2. subscribe 'auth-state' event from bus
+      this.$bus.$on('auth-state', function(payload){
+        that.handleAuthState(payload)
+      })
+
+      // 3. check auth state form local storage
+      const sessionData = JSON.parse(localStorage.getItem('photo-album-user'));
+      if (!!sessionData) {
+        this.handleAuthState({action: 'login'})
+      }
+
+    }
+      
+  }
     // created() {
     //   const url = 'http://35.185.111.183/api/v1/photos'
     //   const that = this
@@ -72,7 +139,6 @@
     // beforeDestroy: function() {
     //   this.$bus.$off('checkHomeState')
     // },
-  }
 </script>
 
 <style scoped>

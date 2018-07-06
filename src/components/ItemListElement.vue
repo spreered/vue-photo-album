@@ -2,14 +2,14 @@
   <div class="photo-item">
     <div class="photo" :style="imgShow">
     </div>
-    <h3>{{itemData.title}}</h3>
-    <p>{{itemData.description}}</p>
+    <h3>{{title}}</h3>
+    <p>{{description}}</p>
     <!-- <div class="photo-btn-container" v-if="isSignin">
       <button @click="handleShow">Show</button>
       <button @click="handleEdit">Edit</button>
       <button @click="handleDelete">Destory</button>
     </div> -->
-    <div class="photo-btn-container" >
+    <div class="photo-btn-container" v-if="isLogin" >
       <button @click="handleShow">Show</button>
       <button @click="handleEdit">Edit</button>
       <button @click="handleDelete">Destory</button>
@@ -20,18 +20,38 @@
 <script>
 // import axios from 'axios';
 export default {
-  // props: ['isSignin', 'id', 'title', 'description', 'url'],
+  // props: ['isLogin', 'id', 'title', 'description', 'url'],
   props: {
-    itemData:{
-      default: function(){
-        return {
-          id:'1',
-          title:'title',
-          description:'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi, exercitationem!',
-          url:''
-        }
-      }
-    }
+    isLogin: false,
+    id:{
+      type: Number,
+      default:1
+    },
+    title:{
+      type: String,
+      default: 'title'
+    },
+    description:{
+      type: String,
+      default:'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi, exercitationem!'
+    },
+    url:{
+      type: String,
+      default:'https://picsum.photos/200/200'
+    },
+    // title:'title',
+    // description:'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi, exercitationem!',
+    // url:''
+    // itemData:{
+    //   default: function(){
+    //     return {
+    //       id:'1',
+    //       title:'title',
+    //       description:'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi, exercitationem!',
+    //       url:''
+    //     }
+    //   }
+    // }
   },
   methods: {
     handleShow: function() {
@@ -57,13 +77,9 @@ export default {
     },
   },
   computed: {
-    file_location: function() {
-      // return this.fileLocation ? 'http://35.185.111.183' + this.url : ''
-      return 'https://picsum.photos/200/200'
-    },
     imgShow: function(){
       return {
-        background:'url('+ this.file_location +') no-repeat center',
+        background:'url('+ this.url +') no-repeat center',
         // background:'url(https://picsum.photos/200/200) no-repeat center',
         backgroundSize: 'cover'
       }
