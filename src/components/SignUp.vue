@@ -1,18 +1,33 @@
  <template>
   <div class="signup">
     <!-- <AuthPanel :type="'signup'" @SignBtnClick="handleSignBtnClick" /> -->
-    <AuthPanel type="signup" />
+    <AuthPanel type="signup" @auth-panel-submit="handleSignUp" />
   </div>
 </template>
 
 <script>
   import AuthPanel from '@/components/AuthPanel'
-  // import axios from 'axios'
+  import axios from 'axios'
   export default {
     components: {
       AuthPanel: AuthPanel,
     },
     methods: {
+      handleSignUp: function(payload){
+        const that = this
+        const signupUrl = 'http://35.185.111.183/api/v1/signup'
+         //access sign up api
+        axios.post(signupUrl, payload)
+          .then(function(res){
+            alert('Signup Success')
+            that.$router.push('/user/login')
+          })
+          .catch(function(err) {
+            console.error(err)
+          })
+       
+
+      }
       // handleSignBtnClick: function(payload) {
       //   const that = this
       //   const url = 'http://35.185.111.183/api/v1/signup'
