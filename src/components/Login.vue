@@ -38,6 +38,9 @@
 
             //emit login state to event-bus
             that.$bus.$emit('auth-state',{action:'login'})
+
+            //go to index
+            that.$router.push('/')
           }).catch(function(err){
             console.error(err)
           })
