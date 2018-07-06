@@ -59,8 +59,6 @@
         // 2. get this.userEmail for localStorage
         console.dir(payload)
         const action = payload.action
-        // const email = payload.email
-
         if (action == 'login'){
           this.isLogin = true
           this.userEmail = JSON.parse(localStorage.getItem('photo-album-user')).email
@@ -81,12 +79,7 @@
 
         //1. access logout api
         const url = 'http://35.185.111.183/api/v1/logout'
-        let params = new FormData()
-        params.append('auth_token',token)
-        axios.post(url, params,
-          {
-            headers: {'Content-Type': 'multipart/form-data'}
-          })
+        axios.post(url, {auth_token: token})
           .then(function(res) { console.log(res) })
           .catch(function(err) { console.error(err) })
 
@@ -95,6 +88,9 @@
 
         //3. clean up localstorage
         localStorage.removeItem('photo-album-user')
+
+        //4. redirect to index
+        this.$router.push('/')
       },
     },
     created(){
@@ -107,8 +103,6 @@
 
       // 2. check auth state form local storage
       const sessionData = JSON.parse(localStorage.getItem('photo-album-user'));
-      // console.log("get storage "+ sessionData);
-      // console.log(sessionData);
       if (!!sessionData) {
         this.handleAuthState({action: 'login'})
       }
