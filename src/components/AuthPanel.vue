@@ -39,12 +39,11 @@
     },
     methods:{
       handleSubmit: function() {
-        // const payload = {
-        //   email: this.email,
-        //   password: this.password,
-        // }
-        // console.log(payload);
-        // this.$emit('SignBtnClick', payload)
+        const payload = {
+          email: this.email,
+          password: this.password,
+        }
+        this.$emit('auth-panel-submit', payload)
         console.log('submit auth')
       }
     }

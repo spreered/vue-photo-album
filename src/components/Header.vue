@@ -32,12 +32,12 @@
 </template>
 
 <script>
-  // import axios from 'axios'
+  import axios from 'axios'
   export default {
     data() {
       return {
         title: 'Photo Album',
-        isLogin: true,
+        isLogin: false,
         userEmail: 'alphcamp@mail.com',
       }
     },
@@ -54,50 +54,68 @@
       handleLogin: function() {
         this.$router.push('/user/login')
       },
-      // checkSigninState: function(res) {
-      //   // res 由 Sign in 與 Log out 行為傳遞過來
-      //   const action = res.action
-      //   const storage = res.payload
+      handleAuthState: function(payload){
+        // 1. change the state of this.isLogin
+        // 2. get this.userEmail for localStorage
+        console.dir(payload)
+        const action = payload.action
+        // const email = payload.email
 
-      //   if (action === 'login') {
-      //     this.isSignin = true;
-      //     this.userEmail = storage.email;
-      //     localStorage.setItem('vue-photo-album-user', JSON.stringify(storage))
-      //   }
-      //   if (action === 'logout') {
-      //     this.isSignin = false
-      //     this.email = ''
-      //     localStorage.removeItem('vue-photo-album-user')
-      //   }
-      // },
+        if (action == 'login'){
+          this.isLogin = true
+          this.userEmail = JSON.parse(localStorage.getItem('photo-album-user')).email
+        }else if(action == 'logout'){
+          this.isLogin = false
+          this.userEmail = ''
+        }
+
+      },
       handleLogout: function() {
-        console.log('logout')
-        // const storage = localStorage.getItem('vue-photo-album-user')
-        // const token = JSON.parse(storage).authToken
-        // const url = 'https://35.185.111.183/api/v1/logout'
-        // axios.post(url, { auth_token: token })
-        //   .then(function(res) { console.log(res) })
-        //   .catch(function(err) { console.error(err) })
-        // this.checkSigninState({ action: 'logout' })
-        // this.$bus.$emit('checkHomeState', {action: 'logout'})
+        // console.log('logout')
+        const sessionData = JSON.parse(localStorage.getItem('photo-album-user'))
+        if (sessionData == null){
+          return 0
+        }
+        const token = sessionData.authToken
+        // console.log('logout token '+ typeof(token))
+
+        //1. access logout api
+        const url = 'http://35.185.111.183/api/v1/logout'
+        let params = new FormData()
+        params.append('auth_token',token)
+        axios.post(url, params,
+          {
+            headers: {'Content-Type': 'multipart/form-data'}
+          })
+          .then(function(res) { console.log(res) })
+          .catch(function(err) { console.error(err) })
+
+        //2. emit 'auth-state' event to $bus
+        this.$bus.$emit('auth-state',{action:'logout',email:sessionData.email})
+
+        //3. clean up localstorage
+        localStorage.removeItem('photo-album-user')
       },
     },
-    // created(){
-    //   const that = this;
-    //   this.$bus.$on('checkSigninState', function(data){
-    //     that.checkSigninState(data)
-    //   });
+    created(){
+      // 1. subscribe 'auth-state' event from bus
+      
+      const that = this;
+      this.$bus.$on('auth-state', function(payload){
+        that.handleAuthState(payload)
+      });
 
-    //   const storage = localStorage.getItem('vue-photo-album-user');
-    //   console.log("get storage "+ storage);
-    //   console.log(storage);
-    //   if (!!storage) {
-    //     this.checkSigninState({action: 'login', payload: JSON.parse(storage)})
-    //   }
-    // },
-    // beforeDestroy: function() {
-    //   this.$bus.$off('checkSigninState')
-    // },
+      // 2. check auth state form local storage
+      const sessionData = JSON.parse(localStorage.getItem('photo-album-user'));
+      console.log("get storage "+ sessionData);
+      console.log(sessionData);
+      if (!!sessionData) {
+        this.handleAuthState({action: 'login', email: sessionData.email})
+      }
+    },
+    beforeDestroy: function() {
+      this.$bus.$off('auth-state')
+    },
   }
 </script>
 
