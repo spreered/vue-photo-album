@@ -4,20 +4,20 @@
       type="text" 
       id="title" 
       placeholder="Title"
-      v-model="title"
+      v-model="newTitle"
     >
     <Datepicker
       wrapper-class="date-wrapper"
       input-class="date-input"
       format="dd.MM.yyyy"
-      v-model="date"
+      v-model="newDate"
     />
     <textarea 
       name="description" 
       id="description" 
       placeholder="description" 
       rows="7"
-      v-model="description"
+      v-model="newDescription"
     />
     <div class="upload-container">
       <input type="file" name="upload-file-btn" id="upload-file-btn" @change="handleFileCnage">
@@ -35,23 +35,33 @@
   import Datepicker from 'vuejs-datepicker'
   
   export default {
-    props: {
-      formData:{
-        default: function(){
-          return {
-            title:'',
-            description:'',
-            file_location:''
-          }
-        }
-      }
+    props:{
+      title:{
+        type:String,
+        default:''
+      },
+      description:{
+        type:String,
+        default:''
+      },
     },
+    // props: {
+    //   formData:{
+    //     default: function(){
+    //       return {
+    //         title:'',
+    //         description:'',
+    //         file_location:''
+    //       }
+    //     }
+    //   }
+    // },
     data: function() {
       return {
-        date: new Date(),
-        title: this.formData.title,
-        description: this.formData.description,
-        file: this.formData.file_location,
+        newDate: new Date(),
+        newTitle: this.title,
+        newDescription: this.description,
+        file: '',
         
       }
     },
@@ -65,13 +75,13 @@
       },
       handleSubmit: function() {
         const payload = {
-          title: this.title,
-          date: this.date,
-          description: this.description,
+          title: this.newTitle,
+          date: this.newDate,
+          description: this.newDescription,
           file_location: this.file,
         }
         console.dir(payload)
-        // this.$emit('submitBtnClick', payload)
+        this.$emit('photo-form-submit', payload)
       }
     }
   }
