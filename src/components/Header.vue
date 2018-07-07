@@ -98,6 +98,7 @@
       
       const that = this;
       this.$bus.$on('auth-state', function(payload){
+        console.log('header get auth-state')
         that.handleAuthState(payload)
       });
 
