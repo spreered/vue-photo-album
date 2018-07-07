@@ -71,7 +71,6 @@
         }
         console.log('submit photo from')
         console.dir(payload)
-        // this.$emit('photo-form-submit', payload)
       }
     }
   }

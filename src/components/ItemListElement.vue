@@ -47,16 +47,6 @@ export default {
       console.log('edit')
     },
     handleDelete: function() {
-      // const deleteUrl = 'http://35.185.111.183/api/v1/photos/' + this.id
-      // const token = JSON.parse(localStorage.getItem('photo-album-user')).authToken
-      // const params = { auth_token: token }
-      // let that = this
-      // axios.delete(deleteUrl, {params})
-      //   .then(function(res) { 
-      //     console.log(res);
-      //     that.$bus.$emit('destroy-item',{id: that.id})
-      //   })
-      //   .catch(function(err) { console.error(err) })
       console.log('destroy')
     },
   },

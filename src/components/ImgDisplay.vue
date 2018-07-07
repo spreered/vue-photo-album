@@ -1,6 +1,5 @@
 <template>
   <div>
-      <!-- <div id="img-panel" :style="imgShow" v-if="url"> -->
       <div id="img-panel" :style="imgShow">
     </div>
   </div>

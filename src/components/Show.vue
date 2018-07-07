@@ -1,7 +1,6 @@
 <template>
   <div class="show">
     <div class="photo-container">
-      <!-- <ImgDisplay :url="url" /> -->
       <ImgDisplay/>  
     </div>
     <div class="main-container">
@@ -13,7 +12,6 @@
 </template>
  
 <script>
-  // import axios from 'axios'
   import ImgDisplay from '@/components/ImgDisplay'
   import moment from 'moment'
   export default {
@@ -28,23 +26,6 @@
     components: {
       ImgDisplay: ImgDisplay,
     },
-    // created: function() {
-    //   const id = this.$route.params.id
-    //   const showUrl = 'http://35.185.111.183/api/v1/photos/' + id
-    //   const token = JSON.parse(localStorage.getItem('photo-album-user')).authToken
-    //   const params = { auth_token: token }
-    //   const that = this
-    //   axios.get(showUrl, {params})
-    //     .then(function(res) {
-    //       that.title = res.data.title
-    //       that.description = res.data.description
-    //       that.url = 'http://35.185.111.183' + res.data.file_location.url
-    //     })
-    //     .catch(function(err) {
-    //       console.error(err)
-    //       that.$router.push('/user/signin')
-    //     })
-    // }
   }
 </script>
 
