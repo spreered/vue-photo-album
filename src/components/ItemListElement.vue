@@ -4,11 +4,7 @@
     </div>
     <h3>{{title}}</h3>
     <p>{{description}}</p>
-    <!-- <div class="photo-btn-container" v-if="isSignin">
-      <button @click="handleShow">Show</button>
-      <button @click="handleEdit">Edit</button>
-      <button @click="handleDelete">Destory</button>
-    </div> -->
+
     <div class="photo-btn-container" v-if="isLogin" >
       <button @click="handleShow">Show</button>
       <button @click="handleEdit">Edit</button>
@@ -20,7 +16,7 @@
 <script>
 import axios from 'axios';
 export default {
-  // props: ['isLogin', 'id', 'title', 'description', 'url'],
+
   props: {
     isLogin: false,
     id:{
@@ -37,7 +33,7 @@ export default {
     },
     url:{
       type: String,
-      default:'https://picsum.photos/200/200'
+      default:'http://via.placeholder.com/200x200'
     },
   },
   methods: {
