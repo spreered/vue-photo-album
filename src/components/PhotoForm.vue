@@ -69,8 +69,9 @@
           description: this.newDescription,
           file_location: this.file,
         }
+        console.log('submit photo from')
         console.dir(payload)
-        this.$emit('photo-form-submit', payload)
+        // this.$emit('photo-form-submit', payload)
       }
     }
   }
