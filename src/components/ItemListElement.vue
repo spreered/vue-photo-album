@@ -4,11 +4,6 @@
     </div>
     <h3>{{title}}</h3>
     <p>{{description}}</p>
-    <!-- <div class="photo-btn-container" v-if="isSignin">
-      <button @click="handleShow">Show</button>
-      <button @click="handleEdit">Edit</button>
-      <button @click="handleDelete">Destory</button>
-    </div> -->
     <div class="photo-btn-container" v-if="isLogin" >
       <button @click="handleShow">Show</button>
       <button @click="handleEdit">Edit</button>
@@ -18,9 +13,8 @@
 </template>
 
 <script>
-import axios from 'axios';
+// import axios from 'axios';
 export default {
-  // props: ['isLogin', 'id', 'title', 'description', 'url'],
   props: {
     isLogin: false,
     id:{
@@ -37,7 +31,7 @@ export default {
     },
     url:{
       type: String,
-      default:'https://picsum.photos/200/200'
+      default:'http://via.placeholder.com/200x200'
     },
   },
   methods: {
@@ -50,16 +44,16 @@ export default {
       console.log('edit')
     },
     handleDelete: function() {
-      const deleteUrl = 'http://35.185.111.183/api/v1/photos/' + this.id
-      const token = JSON.parse(localStorage.getItem('photo-album-user')).authToken
-      const params = { auth_token: token }
-      let that = this
-      axios.delete(deleteUrl, {params})
-        .then(function(res) { 
-          console.log(res);
-          that.$bus.$emit('destroy-item',{id: that.id})
-        })
-        .catch(function(err) { console.error(err) })
+      // const deleteUrl = 'http://35.185.111.183/api/v1/photos/' + this.id
+      // const token = JSON.parse(localStorage.getItem('photo-album-user')).authToken
+      // const params = { auth_token: token }
+      // let that = this
+      // axios.delete(deleteUrl, {params})
+      //   .then(function(res) { 
+      //     console.log(res);
+      //     that.$bus.$emit('destroy-item',{id: that.id})
+      //   })
+      //   .catch(function(err) { console.error(err) })
       console.log('destroy')
     },
   },
