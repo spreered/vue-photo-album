@@ -1,13 +1,19 @@
 <template>
   <div>
-      <div id="img-panel" :style="imgShow" v-if="url">
+      <!-- <div id="img-panel" :style="imgShow" v-if="url"> -->
+      <div id="img-panel" :style="imgShow">
     </div>
   </div>
 </template>
 
 <script>
   export default {
-    props: ['url'],
+    props:{
+      url:{
+        type: String,
+        default: 'http://via.placeholder.com/400x400'
+      }
+    },
     computed:{
       imgShow: function(){
         return {

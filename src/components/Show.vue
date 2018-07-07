@@ -1,7 +1,8 @@
 <template>
   <div class="show">
     <div class="photo-container">
-      <ImgDisplay :url="url" />
+      <!-- <ImgDisplay :url="url" /> -->
+      <ImgDisplay/>  
     </div>
     <div class="main-container">
       <h3 class="main-title">{{title}}</h3>
