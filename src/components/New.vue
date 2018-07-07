@@ -4,13 +4,14 @@
       <ImgDisplay />
     </div>
     <div class="main-container" >
-      <PhotoForm @photo-form-submit="postCreate"/> 
+      <!-- <PhotoForm @photo-form-submit="postCreate"/>  -->
+      <PhotoForm/>
     </div>
   </div>
 </template>
 
 <script>
-  import axios from 'axios'
+  // import axios from 'axios'
   import ImgDisplay from '@/components/ImgDisplay'
   import PhotoForm from '@/components/PhotoForm'
   export default {
@@ -18,33 +19,33 @@
       ImgDisplay: ImgDisplay,
       PhotoForm: PhotoForm,
     },
-    methods: {
-      postCreate: function(payload){
-        const createUrl = 'http://35.185.111.183/api/v1/photos'
-        const token = JSON.parse(localStorage.getItem('photo-album-user')).authToken
-        let params = new FormData();
-        params.append('auth_token',token),
-        params.append('title',payload.title),
-        params.append('date',payload.date),
-        params.append('description',payload.description),
-        params.append('file_location',payload.file_location)
+    // methods: {
+    //   postCreate: function(payload){
+    //     const createUrl = 'http://35.185.111.183/api/v1/photos'
+    //     const token = JSON.parse(localStorage.getItem('photo-album-user')).authToken
+    //     let params = new FormData();
+    //     params.append('auth_token',token),
+    //     params.append('title',payload.title),
+    //     params.append('date',payload.date),
+    //     params.append('description',payload.description),
+    //     params.append('file_location',payload.file_location)
 
-        let that = this;
-        console.log(params)
-        axios.post(createUrl, params,
-        {
-          headers: {
-              'Content-Type': 'multipart/form-data'
-          }
-        })
-          .then(function(res) {
-             console.log(res);
-             that.$router.push('/photo/'+ res.data.result.id)
+    //     let that = this;
+    //     console.log(params)
+    //     axios.post(createUrl, params,
+    //     {
+    //       headers: {
+    //           'Content-Type': 'multipart/form-data'
+    //       }
+    //     })
+    //       .then(function(res) {
+    //          console.log(res);
+    //          that.$router.push('/photo/'+ res.data.result.id)
              
-          })
-          .catch(function(err) { console.error(err) })
-      }
-    }
+    //       })
+    //       .catch(function(err) { console.error(err) })
+    //   }
+    // }
   }
 </script>
 
