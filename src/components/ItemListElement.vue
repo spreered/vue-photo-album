@@ -16,7 +16,10 @@
 // import axios from 'axios';
 export default {
   props: {
-    isLogin: false,
+    isLogin: {
+      type: Boolean,
+      default:false
+    },
     id:{
       type: Number,
       default:1
