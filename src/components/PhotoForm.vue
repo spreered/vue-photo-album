@@ -63,7 +63,7 @@
         console.log(this.file)
       },
       handleSubmit: function() {
-        const payload = {
+        var payload = {
           title: this.newTitle,
           date: this.newDate,
           description: this.newDescription,

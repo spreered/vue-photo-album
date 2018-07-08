@@ -58,7 +58,7 @@
         // 1. change the state of this.isLogin
         // 2. get this.userEmail for localStorage
         console.dir(payload)
-        const action = payload.action
+        var action = payload.action
         if (action == 'login'){
           this.isLogin = true
           this.userEmail = JSON.parse(localStorage.getItem('photo-album-user')).email
@@ -70,15 +70,15 @@
       },
       handleLogout: function() {
         // console.log('logout')
-        const sessionData = JSON.parse(localStorage.getItem('photo-album-user'))
+        var sessionData = JSON.parse(localStorage.getItem('photo-album-user'))
         if (sessionData == null){
           return 0
         }
-        const token = sessionData.authToken
+        var token = sessionData.authToken
         // console.log('logout token '+ typeof(token))
 
         //1. access logout api
-        const url = 'http://35.185.111.183/api/v1/logout'
+        var url = 'http://35.185.111.183/api/v1/logout'
         axios.post(url, {auth_token: token})
           .then(function(res) { console.log(res) })
           .catch(function(err) { console.error(err) })
@@ -96,14 +96,14 @@
     created(){
       // 1. subscribe 'auth-state' event from bus
       
-      const that = this;
+      var that = this;
       this.$bus.$on('auth-state', function(payload){
         console.log('header get auth-state')
         that.handleAuthState(payload)
       });
 
       // 2. check auth state form local storage
-      const sessionData = JSON.parse(localStorage.getItem('photo-album-user'));
+      var sessionData = JSON.parse(localStorage.getItem('photo-album-user'));
       if (!!sessionData) {
         this.handleAuthState({action: 'login'})
       }

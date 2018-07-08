@@ -49,9 +49,9 @@ export default {
       console.log('edit')
     },
     handleDelete: function() {
-      const deleteUrl = 'http://35.185.111.183/api/v1/photos/' + this.id
-      const token = JSON.parse(localStorage.getItem('photo-album-user')).authToken
-      const params = { auth_token: token }
+      var deleteUrl = 'http://35.185.111.183/api/v1/photos/' + this.id
+      var token = JSON.parse(localStorage.getItem('photo-album-user')).authToken
+      var params = { auth_token: token }
       let that = this
       axios.delete(deleteUrl, {params})
         .then(function(res) { 

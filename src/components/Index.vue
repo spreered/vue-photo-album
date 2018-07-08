@@ -38,7 +38,7 @@
     },
     methods: {
       handleAuthState: function(payload){
-        const action = payload.action
+        var action = payload.action
         if (action == 'login'){
           this.isLogin = true
         }else if(action == 'logout'){
@@ -56,9 +56,9 @@
     },
     created(){
       //1. get photos form api
-      const indexUrl = 'http://35.185.111.183/api/v1/photos'
-      const hostUrl = 'http://35.185.111.183/'
-      const that = this
+      var indexUrl = 'http://35.185.111.183/api/v1/photos'
+      var hostUrl = 'http://35.185.111.183/'
+      var that = this
       axios.get(indexUrl,{})
         .then(function(res){
           // res.data
@@ -89,7 +89,7 @@
       })
 
       // 3. check auth state form local storage
-      const sessionData = JSON.parse(localStorage.getItem('photo-album-user'));
+      var sessionData = JSON.parse(localStorage.getItem('photo-album-user'));
       if (!!sessionData) {
         this.handleAuthState({action: 'login'})
       }

@@ -30,17 +30,17 @@
     },
     methods: {
       patchUpdate: function(payload){
-        const id = this.$route.params.id
-        const updateUrl = 'http://35.185.111.183/api/v1/photos/'+id
-        const token = JSON.parse(localStorage.getItem('photo-album-user')).authToken
-        let params = new FormData();
+        var id = this.$route.params.id
+        var updateUrl = 'http://35.185.111.183/api/v1/photos/'+id
+        var token = JSON.parse(localStorage.getItem('photo-album-user')).authToken
+        var params = new FormData();
         params.append('auth_token',token),
         params.append('title',payload.title),
         params.append('date',payload.date),
         params.append('description',payload.description),
         params.append('file_location',payload.file_location)
 
-        let that = this;
+        var that = this;
         console.log(params)
         axios.patch(updateUrl, params,
         {
@@ -58,11 +58,11 @@
     },
     created(){
     //   console.log('edit');
-      const id = this.$route.params.id
-      const url = 'http://35.185.111.183/api/v1/photos/' + id
-      const token = JSON.parse(localStorage.getItem('photo-album-user')).authToken
-      const params = { auth_token: token }
-      const that = this
+      var id = this.$route.params.id
+      var url = 'http://35.185.111.183/api/v1/photos/' + id
+      var token = JSON.parse(localStorage.getItem('photo-album-user')).authToken
+      var params = { auth_token: token }
+      var that = this
       axios.get(url, { params })
         .then(function(res) {
           // {

@@ -28,11 +28,11 @@
       ImgDisplay: ImgDisplay,
     },
     created: function() {
-      const id = this.$route.params.id
-      const showUrl = 'http://35.185.111.183/api/v1/photos/' + id
-      const token = JSON.parse(localStorage.getItem('photo-album-user')).authToken
-      const params = { auth_token: token }
-      const that = this
+      var id = this.$route.params.id
+      var showUrl = 'http://35.185.111.183/api/v1/photos/' + id
+      var token = JSON.parse(localStorage.getItem('photo-album-user')).authToken
+      var params = { auth_token: token }
+      var that = this
       axios.get(showUrl, {params})
         .then(function(res) {
           that.title = res.data.title

@@ -14,8 +14,8 @@
     methods: {
       handleLogin: function(payload){
         console.log('handleLogin')
-        const that = this
-        const url = 'http://35.185.111.183/api/v1/login'
+        var that = this
+        var url = 'http://35.185.111.183/api/v1/login'
         // payload:{
         //   email:'',
         //   password:''
@@ -29,9 +29,9 @@
             //   "user_id": 1
             // }
             console.log('login success!')
-            const authToken = res.data.auth_token
-            const email = payload.email
-            const sessionData = {authToken: authToken, email: email}
+            var authToken = res.data.auth_token
+            var email = payload.email
+            var sessionData = {authToken: authToken, email: email}
             localStorage.setItem('photo-album-user',JSON.stringify(sessionData))
             //save to localstorage
 

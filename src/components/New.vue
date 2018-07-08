@@ -20,16 +20,16 @@
     },
     methods: {
       postCreate: function(payload){
-        const createUrl = 'http://35.185.111.183/api/v1/photos'
-        const token = JSON.parse(localStorage.getItem('photo-album-user')).authToken
-        let params = new FormData();
+        var createUrl = 'http://35.185.111.183/api/v1/photos'
+        var token = JSON.parse(localStorage.getItem('photo-album-user')).authToken
+        var params = new FormData();
         params.append('auth_token',token),
         params.append('title',payload.title),
         params.append('date',payload.date),
         params.append('description',payload.description),
         params.append('file_location',payload.file_location)
 
-        let that = this;
+        var that = this;
         console.log(params)
         axios.post(createUrl, params,
         {
