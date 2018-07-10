@@ -39,7 +39,7 @@
     },
     methods:{
       handleSubmit: function() {
-        const payload = {
+        var payload = {
           email: this.email,
           password: this.password,
         }
