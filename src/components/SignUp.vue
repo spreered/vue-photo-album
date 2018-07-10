@@ -14,8 +14,8 @@
     },
     methods: {
       handleSignUp: function(payload){
-        const that = this
-        const signupUrl = 'http://35.185.111.183/api/v1/signup'
+        var that = this
+        var signupUrl = 'http://35.185.111.183/api/v1/signup'
          //access sign up api
         axios.post(signupUrl, payload)
           .then(function(res){
