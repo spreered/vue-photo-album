@@ -1,6 +1,5 @@
  <template>
   <div class="signup">
-    <!-- <AuthPanel :type="'signup'" @SignBtnClick="handleSignBtnClick" /> -->
     <AuthPanel type="signup" @auth-panel-submit="handleSignUp" />
   </div>
 </template>
