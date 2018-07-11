@@ -109,7 +109,7 @@
       }
     },
     beforeDestroy: function() {
-      this.$bus.$off('auth-state')
+      this.$bus.$off('auth-state',this)
     },
   }
 </script>

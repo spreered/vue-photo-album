@@ -95,7 +95,8 @@
       }
     },
     beforeDestroy: function() {
-      this.$bus.$off('destroy-item')
+      this.$bus.$off('destroy-item'),
+      this.$bus.$off('auth-state',this)
     },
     
       
