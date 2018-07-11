@@ -84,7 +84,7 @@
           .catch(function(err) { console.error(err) })
 
         //2. emit 'auth-state' event to $bus
-        this.$bus.$emit('auth-state',{action:'logout',email:sessionData.email})
+        this.$bus.$emit('auth-state',{action:'logout'})
 
         //3. clean up localstorage
         localStorage.removeItem('photo-album-user')
