@@ -106,6 +106,8 @@
       var sessionData = JSON.parse(localStorage.getItem('photo-album-user'));
       if (!!sessionData) {
         this.handleAuthState({action: 'login'})
+      }else{
+        this.handleAuthState({action: 'logout'})
       }
     },
     beforeDestroy: function() {

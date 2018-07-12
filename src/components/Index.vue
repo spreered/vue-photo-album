@@ -1,13 +1,6 @@
 <template>
   <div class="container">
     <div class="item-list" v-for="photo in photos">
-      <!-- <PhotoContainer
-        :isLogin="isSignin"
-        :id="photo.id"
-        :title="photo.title"
-        :description="photo.description"
-        :fileLocation="photo.file_location"
-      /> -->
       <item-list-element
         :isLogin="isLogin"
         :id ="photo.id"
@@ -15,10 +8,6 @@
         :description="photo.description"
         :url="'http://35.185.111.183'+photo.file_location.url" 
       />
-              <!-- :id="photo.id"\
-        :title="photo.title"
-        :description="photo.description"
-        :url="photo.file_location.url" -->
     </div>
   </div>
 </template>
@@ -55,7 +44,7 @@
       }
     },
     created(){
-      //1. get photos form api
+      //get photos form api
       var indexUrl = 'http://35.185.111.183/api/v1/photos'
       var hostUrl = 'http://35.185.111.183/'
       var that = this
@@ -79,8 +68,8 @@
           that.photos = res.data.data
         }).catch(function(err){console.error(err) })
       
-      // 2. subscribe 'auth-state' event from bus
-      //    subscribe 'destroy-item' event form bus
+      // subscribe 'auth-state' event from bus
+      // subscribe 'destroy-item' event form bus
       this.$bus.$on('auth-state', function(payload){
         that.handleAuthState(payload)
       })
@@ -88,14 +77,16 @@
         that.handleDestroyItem(payload.id)
       })
 
-      // 3. check auth state form local storage
+      // check auth state form local storage
       var sessionData = JSON.parse(localStorage.getItem('photo-album-user'));
       if (!!sessionData) {
         this.handleAuthState({action: 'login'})
+      }else{
+        this.handleAuthState({action: 'logout'})
       }
     },
-    beforeDestroy: function() {
-      this.$bus.$off('destroy-item'),
+    beforeDestroy() {
+      this.$bus.$off('destroy-item',this),
       this.$bus.$off('auth-state',this)
     },
     
