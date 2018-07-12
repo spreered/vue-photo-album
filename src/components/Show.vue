@@ -1,7 +1,7 @@
 <template>
   <div class="show">
     <div class="photo-container">
-      <ImgDisplay :url="url" />
+      <ImgDisplay :url="url" v-if="url!='' && url != null" />
     </div>
     <div class="main-container">
       <h3 class="main-title">{{title}}</h3>
