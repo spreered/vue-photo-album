@@ -8,7 +8,7 @@
       <PhotoForm
       :title="photo.title"
       :description="photo.description"
-      v-if="photo.id"
+      v-if="photo.title"
       @photo-form-submit="patchUpdate"/> 
     </div>
   </div>
