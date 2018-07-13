@@ -55,7 +55,7 @@ export default {
       let that = this
       axios.delete(deleteUrl, {params})
         .then(function(res) { 
-          console.log(res);
+          console.log(res)
           that.$bus.$emit('destroy-item',{id: that.id})
         })
         .catch(function(err) { console.error(err) })
