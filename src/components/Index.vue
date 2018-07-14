@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <div class="item-list" v-for="(photo,index) in photos">
+    <div class="item-list" v-for="(photo,index) in photos" :key="photo.id">
       <item-list-element
         :isLogin="isLogin"
         :id ="photo.id"
