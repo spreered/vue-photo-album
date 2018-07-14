@@ -7,6 +7,7 @@
         :title="photo.title"
         :description="photo.description"
         :url="'http://35.185.111.183'+photo.file_location.url" 
+        @destroy-item="handleDestroyItem"
       />
     </div>
   </div>
@@ -34,9 +35,10 @@
           this.isLogin = false
         }
       },
-      handleDestroyItem: function(id){
+      handleDestroyItem: function(payload){
+        console.log('delete id is '+ payload.id)
         let index = this.photos.findIndex(function(element,index,array){    
-          return element.id === id
+          return element.id === payload.id
         })
         console.log(index)
         this.photos.splice(index,1)
@@ -69,12 +71,8 @@
         }).catch(function(err){console.error(err) })
       
       // subscribe 'auth-state' event from bus
-      // subscribe 'destroy-item' event form bus
       this.$bus.$on('auth-state', function(payload){
         that.handleAuthState(payload)
-      })
-      this.$bus.$on('destroy-item',function(payload){
-        that.handleDestroyItem(payload.id)
       })
 
       // check auth state form local storage
@@ -86,7 +84,6 @@
       }
     },
     beforeDestroy() {
-      this.$bus.$off('destroy-item',this),
       this.$bus.$off('auth-state',this)
     },
     
