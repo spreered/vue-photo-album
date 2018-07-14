@@ -1,13 +1,13 @@
 <template>
   <div class="container">
-    <div class="item-list" v-for="photo in photos">
+    <div class="item-list" v-for="(photo,index) in photos">
       <item-list-element
         :isLogin="isLogin"
         :id ="photo.id"
         :title="photo.title"
         :description="photo.description"
         :url="'http://35.185.111.183'+photo.file_location.url" 
-        @destroy-item="handleDestroyItem"
+        @destroy-item="handleDestroyItem(index)"
       />
     </div>
   </div>
@@ -35,12 +35,12 @@
           this.isLogin = false
         }
       },
-      handleDestroyItem: function(payload){
-        console.log('delete id is '+ payload.id)
-        let index = this.photos.findIndex(function(element,index,array){    
-          return element.id === payload.id
-        })
-        console.log(index)
+      handleDestroyItem: function(index){
+        // console.log('delete id is '+ payload.id)
+        // var index = this.photos.findIndex(function(element,index,array){    
+        //   return element.id === payload.id
+        // })
+        // console.log(index)
         this.photos.splice(index,1)
         
       }
