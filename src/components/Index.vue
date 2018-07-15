@@ -71,9 +71,7 @@
         }).catch(function(err){console.error(err) })
       
       // subscribe 'auth-state' event from bus
-      this.$bus.$on('auth-state', function(payload){
-        that.handleAuthState(payload)
-      })
+      this.$bus.$on('auth-state', this.handleAuthState)
 
       // check auth state form local storage
       var sessionData = JSON.parse(localStorage.getItem('photo-album-user'));
@@ -84,7 +82,7 @@
       }
     },
     beforeDestroy() {
-      this.$bus.$off('auth-state',this)
+      this.$bus.$off('auth-state',this.handleAuthState)
     },
     
       
