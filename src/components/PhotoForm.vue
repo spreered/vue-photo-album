@@ -20,7 +20,7 @@
       v-model="newDescription"
     />
     <div class="upload-container">
-      <input type="file" name="upload-file-btn" id="upload-file-btn" @change="handleFileCnage">
+      <input type="file" name="upload-file-btn" id="upload-file-btn" @change="handleFileChange">
     </div>
     <button
       class="submit-btn"
@@ -58,7 +58,7 @@
       Datepicker: Datepicker,
     },
     methods: {
-      handleFileCnage(e) {
+      handleFileChange(e) {
         this.file = e.target.files[0]
         console.log(this.file)
       },
