@@ -38,6 +38,7 @@
           that.title = res.data.title
           that.description = res.data.description
           that.url = 'http://35.185.111.183' + res.data.file_location.url
+          that.date = res.data.date
         })
         .catch(function(err) {
           console.error(err)
