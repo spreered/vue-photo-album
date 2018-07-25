@@ -45,13 +45,13 @@
         this.$router.push('/')
       },
       handleNewPhotoClick: function() {
-        this.$router.push('/photo/new')
+        this.$router.push('/photos/new')
       },
       handleSignUp: function() {
-        this.$router.push('/user/signup')
+        this.$router.push('/signup')
       },
       handleLogin: function() {
-        this.$router.push('/user/login')
+        this.$router.push('/login')
       },
       handleLogout: function() {
         console.log('logout')
