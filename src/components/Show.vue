@@ -14,14 +14,13 @@
 <script>
   import axios from 'axios'
   import ImgDisplay from '@/components/ImgDisplay'
-  import moment from 'moment'
   export default {
     data: function() {
       return {
         title: '',
         description: '',
         url: '',
-        date: moment().format('DD.MM.YYYY HH:MM'),
+        date: '2018-01-01',
       }
     },
     components: {
