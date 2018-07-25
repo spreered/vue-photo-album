@@ -41,11 +41,11 @@ export default {
   },
   methods: {
     handleShow: function() {
-      this.$router.push('/photo/' + this.id)
+      this.$router.push('/photos/' + this.id)
       console.log('show')
     },
     handleEdit: function() {
-      this.$router.push('/photo/edit/' + this.id)
+      this.$router.push('/photos/edit/' + this.id)
       console.log('edit')
     },
     handleDelete: function() {

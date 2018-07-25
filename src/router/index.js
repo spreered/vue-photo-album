@@ -19,27 +19,27 @@ export default new Router({
       component: Index
     },
     {
-      path: '/user/login',
+      path: '/login',
       name: 'Login',
       component: Login
     },
     {
-      path: '/user/signup',
+      path: '/signup',
       name: 'SignUp',
       component: SignUp
     },
     {
-      path: '/photo/new',
+      path: '/photos/new',
       name: 'New',
       component: New
     },
     {
-      path: '/photo/edit/:id',
+      path: '/photos/edit/:id',
       name: 'Edit',
       component: Edit
     },
     {
-      path: '/photo/:id',
+      path: '/photos/:id',
       name: 'Show',
       component: Show
     }
