@@ -13,14 +13,13 @@
  
 <script>
   import ImgDisplay from '@/components/ImgDisplay'
-  import moment from 'moment'
   export default {
     data: function() {
       return {
         title: 'title',
         description: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dignissimos, cupiditate.',
         url: '',
-        date: moment().format('DD.MM.YYYY HH:MM'),
+        date: '2018-01-01',
       }
     },
     components: {
